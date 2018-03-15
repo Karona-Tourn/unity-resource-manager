@@ -168,7 +168,9 @@ namespace TK.ResourceManagement
 			{
 				if ( instance == null )
 				{
-					new GameObject ( "_ResourceManager", typeof ( ResourceManager ) );
+					instance = FindObjectOfType<ResourceManager> ();
+					if ( instance != null ) DontDestroyOnLoad ( instance.gameObject );
+					else new GameObject ( "_ResourceManager", typeof ( ResourceManager ) );
 				}
 
 				return instance;
